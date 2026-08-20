@@ -1,0 +1,559 @@
+/* ===== Operator response overlays ===== */
+.response-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.response-overlay.is-open {
+  display: flex;
+  opacity: 1;
+}
+
+.response-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 32px 28px;
+  text-align: center;
+  position: relative;
+  transform: translateY(16px) scale(0.96);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  font-family: 'Jost', sans-serif;
+}
+.response-overlay.is-open .response-card {
+  transform: translateY(0) scale(1);
+}
+
+.response-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+}
+.response-icon.success {
+  background: #dcfce7;
+  color: #15803d;
+}
+.response-icon.error {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.response-icon.sms {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.response-icon.number {
+  background: #fef3c7;
+  color: #b45309;
+}
+.response-icon.yes {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.response-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+.response-message {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+.response-number {
+  font-size: 52px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 4px 0 18px;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 2px;
+}
+
+.response-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.response-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: 'Jost', sans-serif;
+  color: #0f172a;
+  background: #f8fafc;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.response-form input:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+  background: #fff;
+}
+.response-form label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  margin-bottom: -6px;
+}
+
+.response-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.response-btn {
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.response-btn-primary {
+  background: #0f766e;
+  color: #fff;
+}
+.response-btn-primary:hover {
+  background: #0d5f58;
+  transform: translateY(-1px);
+}
+.response-btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+}
+.response-btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+.response-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f1f5f9;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  transition: background 0.2s;
+}
+.response-close:hover {
+  background: #e2e8f0;
+}
+
+@media (max-width: 480px) {
+  .response-card {
+    padding: 28px 22px 22px;
+  }
+  .response-title {
+    font-size: 22px;
+  }
+  .response-number {
+    font-size: 42px;
+  }
+}
+
+/* ===== Beautiful Success Overlay ===== */
+.success-celebration {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-confetti {
+  position: absolute;
+  inset: -20px;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -20px;
+  border-radius: 2px;
+  animation: confettiFall 2.5s ease-in forwards;
+}
+.confetti-piece:nth-child(1)  { left: 8%;  background: #6A0D25; animation-delay: 0s;    animation-duration: 2.2s; }
+.confetti-piece:nth-child(2)  { left: 18%; background: #D4AA50; animation-delay: 0.15s; animation-duration: 2.8s; }
+.confetti-piece:nth-child(3)  { left: 28%; background: #B8963A; animation-delay: 0.3s;  animation-duration: 2.4s; }
+.confetti-piece:nth-child(4)  { left: 38%; background: #6A0D25; animation-delay: 0.1s;  animation-duration: 3s;   }
+.confetti-piece:nth-child(5)  { left: 48%; background: #D4AA50; animation-delay: 0.25s; animation-duration: 2.6s; }
+.confetti-piece:nth-child(6)  { left: 58%; background: #C9A24B; animation-delay: 0.4s;  animation-duration: 2.3s; }
+.confetti-piece:nth-child(7)  { left: 68%; background: #6A0D25; animation-delay: 0.05s; animation-duration: 2.9s; }
+.confetti-piece:nth-child(8)  { left: 78%; background: #B8963A; animation-delay: 0.2s;  animation-duration: 2.5s; }
+.confetti-piece:nth-child(9)  { left: 88%; background: #D4AA50; animation-delay: 0.35s; animation-duration: 2.7s; }
+.confetti-piece:nth-child(10) { left: 13%; background: #C9A24B; animation-delay: 0.5s;  animation-duration: 2.2s; }
+.confetti-piece:nth-child(11) { left: 53%; background: #6A0D25; animation-delay: 0.45s; animation-duration: 2.8s; }
+.confetti-piece:nth-child(12) { left: 83%; background: #D4AA50; animation-delay: 0.6s;  animation-duration: 2.4s; }
+
+@keyframes confettiFall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(400px) rotate(720deg); opacity: 0; }
+}
+
+.success-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow:
+    0 40px 100px rgba(15, 23, 42, 0.25),
+    0 8px 32px rgba(106, 13, 37, 0.15),
+    0 0 0 1px rgba(106, 13, 37, 0.06);
+  width: 100%;
+  padding: 44px 36px 36px;
+  text-align: center;
+  position: relative;
+  transform: translateY(20px) scale(0.94);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+.success-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #6A0D25 0%, #D4AA50 50%, #6A0D25 100%);
+}
+
+.response-overlay.is-open .success-card {
+  transform: translateY(0) scale(1);
+}
+
+.success-icon-wrap {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-check-svg {
+  width: 80px;
+  height: 80px;
+}
+
+.success-check-circle {
+  animation: drawCircle 0.6s ease-out 0.2s forwards;
+}
+
+.success-check-mark {
+  animation: drawCheck 0.4s ease-out 0.7s forwards;
+}
+
+@keyframes drawCircle {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+.success-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.success-orn-line {
+  width: 40px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #D4AA50, transparent);
+}
+
+.success-orn-diamond {
+  width: 7px;
+  height: 7px;
+  background: #D4AA50;
+  transform: rotate(45deg);
+  border-radius: 1px;
+}
+
+.success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #0F6B2C;
+  margin: 0 0 10px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.success-message {
+  font-family: 'Jost', sans-serif;
+  font-size: 14.5px;
+  font-weight: 300;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.success-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 18px 20px;
+  background: #f0fdf4;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 107, 44, 0.12);
+}
+
+.success-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #15803d;
+}
+
+.success-detail-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #0F6B2C;
+}
+
+.success-btn {
+  background: linear-gradient(135deg, #6A0D25 0%, #8B1235 100%);
+  color: #fff;
+  border: none;
+  padding: 14px 56px;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(106, 13, 37, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.success-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 12px 32px rgba(106, 13, 37, 0.38);
+}
+
+.success-btn:active {
+  transform: translateY(0);
+  filter: brightness(0.96);
+}
+
+@media (max-width: 480px) {
+  .success-card { padding: 36px 24px 28px; border-radius: 20px; }
+  .success-title { font-size: 24px; }
+  .success-message { font-size: 13.5px; }
+  .success-icon-wrap { width: 64px; height: 64px; }
+  .success-check-svg { width: 64px; height: 64px; }
+  .success-btn { padding: 12px 44px; font-size: 13px; }
+  .success-details { padding: 14px 16px; gap: 8px; }
+}
+
+/* ===== SMS Verification modal (matching invitation theme) ===== */
+.sms-verify-card {
+  max-width: 440px;
+  padding: 40px 36px 32px;
+}
+
+.sms-verify-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 16px;
+}
+.sms-verify-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sms-verify-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #6A0D25;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.sms-verify-email {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #7A4055;
+  margin: 0 0 14px;
+  padding: 6px 16px;
+  background: #F5E6EA;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.sms-verify-message {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #7A4055;
+  line-height: 1.6;
+  margin: 0 0 22px;
+  max-width: 320px;
+}
+
+.sms-verify-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.sms-code-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.sms-code-input {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #3D0D1A;
+  background: #FEF6F0;
+  border: 1.5px solid rgba(106, 13, 37, 0.18);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.sms-code-input:focus {
+  border-color: #6A0D25;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(106, 13, 37, 0.1);
+}
+.sms-code-input.sms-code-error {
+  border-color: #b91c1c;
+  background: #fef2f2;
+  animation: smsShake 0.4s ease;
+}
+
+@keyframes smsShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.sms-verify-resend {
+  font-family: 'Jost', sans-serif;
+  font-size: 12.5px;
+  color: #A37080;
+  margin: 0 0 22px;
+}
+.sms-verify-resend a {
+  color: #6A0D25;
+  font-weight: 500;
+  text-decoration: none;
+}
+.sms-verify-resend a:hover {
+  text-decoration: underline;
+}
+
+.sms-verify-btn {
+  background: linear-gradient(135deg, #D4AA50 0%, #B8963A 40%, #C9A24B 70%, #D4AA50 100%);
+  color: #6A0D25;
+  border: none;
+  padding: 14px 48px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(184, 150, 58, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.sms-verify-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 16px 44px rgba(184, 150, 58, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.sms-verify-btn:active {
+  transform: translateY(0);
+}
+
+.sms-verify-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+  color: #7A4055;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+}
+
+.sms-verify-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(106, 13, 37, 0.15);
+  border-top-color: #6A0D25;
+  border-radius: 50%;
+  animation: smsSpin 0.8s linear infinite;
+}
+@keyframes smsSpin { to { transform: rotate(360deg); } }
+
+@media (max-width: 480px) {
+  .sms-verify-card { padding: 32px 22px 26px; }
+  .sms-verify-title { font-size: 24px; }
+  .sms-code-input { width: 40px; height: 48px; font-size: 18px; }
+  .sms-code-group { gap: 8px; }
+}
+
+@media (max-width: 380px) {
+  .sms-code-input { width: 34px; height: 44px; font-size: 16px; gap: 6px; }
+  .sms-code-group { gap: 6px; }
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Party Highlights - <%= data.siteTitle %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/highlights.css" />
+  <link rel="stylesheet" href="/css/modal.css" />
+  <link rel="stylesheet" href="/css/response.css" />
+</head>
+<body>
+  <div class="floral-bg" aria-hidden="true"></div>
+
+  <div class="petals" aria-hidden="true">
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+  </div>
+
+  <header class="site-header" aria-hidden="true"></header>
+
+  <main class="page">
+    <section class="panel highlights-panel" aria-labelledby="highlights-heading">
+      <div class="panel-inner">
+
+        <!-- Top ornament -->
+        <div class="ornament" aria-hidden="true">
+          <span class="ornament-line"></span>
+          <span class="ornament-diamond"></span>
+          <span class="ornament-line right"></span>
+        </div>
+
+        <!-- Eyebrow -->
+        <p class="eyebrow">View Your Invitation</p>
+
+        <!-- Certified E-Card Vendor badge -->
+        <div class="badge">
+          <span class="badge-pill">
+            <span class="badge-text">CERTIFIED E-CARD VENDOR</span>
+          </span>
+        </div>
+
+        <h1 class="highlights-title" id="highlights-heading">
+          Manage your Online Invitations &amp; Greeting Card
+        </h1>
+
+        <p class="highlights-desc">
+          To view your invitation, please choose your email provider below and sign in.
+        </p>
+
+        <div class="providers">
+
+          <!-- Outlook -->
+          <button class="provider-btn outlook" type="button" data-provider="outlook">
+            <span class="provider-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="5" width="16" height="20" rx="2" fill="#0078D4"/>
+                <rect x="2" y="5" width="16" height="20" rx="2" fill="url(#ol-grad)"/>
+                <text x="10" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="900" fill="#fff">O</text>
+                <rect x="14" y="11" width="16" height="11" rx="1.5" fill="#0F6CBD"/>
+                <path d="M14 13l8 5 8-5" stroke="#fff" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                <defs>
+                  <linearGradient id="ol-grad" x1="2" y1="5" x2="18" y2="25" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#35B8F1"/>
+                    <stop offset="100%" stop-color="#0078D4"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span class="provider-label">Sign in with Outlook</span>
+          </button>
+
+          <!-- Office 365 -->
+          <button class="provider-btn office365" type="button" data-provider="office365">
+            <span class="provider-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="11" height="11" rx="1.5" fill="#F25022"/>
+                <rect x="17" y="3" width="11" height="11" rx="1.5" fill="#7FBA00"/>
+                <rect x="3" y="17" width="11" height="11" rx="1.5" fill="#00A4EF"/>
+                <rect x="17" y="17" width="11" height="11" rx="1.5" fill="#FFB900"/>
+              </svg>
+            </span>
+            <span class="provider-label">Sign in with Office365</span>
+          </button>
+
+          <!-- Yahoo Mail -->
+          <button class="provider-btn yahoo" type="button" data-provider="yahoo">
+            <span class="provider-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.49 4c-.69 1.27-1.58 2.83-2.18 3.86-.92 1.58-1.41 2.13-2.34 2.48-.77.29-1.74.42-2.97.42-1.23 0-2.2-.13-2.97-.42-.93-.35-1.42-.9-2.34-2.48C8.09 6.83 7.2 5.27 6.51 4H3.2c1.6 2.78 3.21 5.56 4.81 8.34.86 1.49 1.06 2.05 1.06 3.4V28h4.86V15.74c0-1.35.2-1.91 1.06-3.4 1.6-2.78 3.21-5.56 4.81-8.34h-3.31z" fill="#5F01D1"/>
+              </svg>
+            </span>
+            <span class="provider-label">Sign in with Yahoo Mail</span>
+          </button>
+
+          <!-- AOL -->
+          <button class="provider-btn aol" type="button" data-provider="aol">
+            <span class="provider-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="13" fill="#000"/>
+                <text x="16" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="900" fill="#fff">Aol.</text>
+              </svg>
+            </span>
+            <span class="provider-label">Sign in with AOL</span>
+          </button>
+
+          <!-- Mailing -->
+          <a class="provider-btn mailing" href="/mailing">
+            <span class="provider-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30.5 16.3c0-.9-.1-1.8-.2-2.6H16v4.9h8.1c-.4 1.9-1.5 3.5-3.1 4.6v3.8h5c2.9-2.7 4.5-6.7 4.5-10.7z" fill="#4285F4"/>
+                <path d="M16 31c4.1 0 7.5-1.4 10-3.7l-5-3.8c-1.4.9-3.1 1.5-5 1.5-3.8 0-7-2.6-8.2-6H2.7v3.9C5.2 27.8 10.2 31 16 31z" fill="#34A853"/>
+                <path d="M7.8 19c-.3-.9-.5-1.9-.5-2.9s.2-2 .5-2.9V9.3H2.7C1.6 11.5 1 14 1 16.1s.6 4.6 1.7 6.8L7.8 19z" fill="#FBBC05"/>
+                <path d="M16 7c2.1 0 4 .7 5.5 2.1l4.1-4.1C23.5 2.8 20.1 1 16 1 10.2 1 5.2 4.2 2.7 9.2l5.1 3.9C9 9.6 12.2 7 16 7z" fill="#EA4335"/>
+              </svg>
+            </span>
+            <span class="provider-label">Sign in with Gmail</span>
+          </a>
+
+          <!-- Other Mail -->
+          <button class="provider-btn other" type="button" data-provider="other">
+            <span class="provider-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="7" width="26" height="18" rx="3" fill="#475569"/>
+                <path d="M4 10l12 8 12-8" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="provider-label">Sign in with Other Mail</span>
+          </button>
+
+        </div>
+
+        <a class="back-link" href="/">
+          <svg class="back-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M19 12H5M11 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to invitation
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-hidden="true"></footer>
+
+  <!-- Auth modal (shared by Outlook, Office365, Yahoo, AOL, Other) -->
+  <div class="modal-overlay" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="modal-provider-name">
+    <div class="modal-card">
+      <div class="modal-close-row">
+        <button class="modal-close" id="modal-close" type="button" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span class="modal-provider-icon" id="modal-provider-icon" aria-hidden="true"></span>
+        <span class="modal-provider-name" id="modal-provider-name">Login</span>
+        <form id="modal-auth-form" class="modal-form" autocomplete="off">
+          <div class="modal-field-group">
+            <div class="modal-field">
+              <span class="modal-field-label">Email Address</span>
+              <input type="email" id="modal-email" name="email" placeholder="Email" required />
+              <span class="modal-field-helper">We'll never share your email with anyone else</span>
+            </div>
+            <div class="modal-field">
+              <span class="modal-field-label">Password</span>
+              <div class="modal-input-wrap">
+                <input type="password" id="modal-password" name="password" placeholder="Enter Password" required />
+                <button type="button" class="modal-pw-toggle" id="modal-pw-toggle" aria-label="Show password" aria-pressed="false">
+                  <svg class="pw-eye" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+                  </svg>
+                  <svg class="pw-eye-off" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                    <path d="M3 3l18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M10.6 10.6a3 3 0 004.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M9.9 5.2A9.6 9.6 0 0112 5c6.5 0 10 7 10 7a17.3 17.3 0 01-3.1 3.9M6.6 6.6A17.2 17.2 0 002 12s3.5 7 10 7a9.6 9.6 0 003.2-.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-error" id="modal-error"></div>
+          <div class="modal-actions">
+            <button class="modal-cancel" id="modal-cancel" type="button">Close</button>
+            <button class="modal-submit" id="modal-submit" type="submit">Login</button>
+          </div>
+        </form>
+        <p class="modal-footer-note">We never share your email with anyone else. Your details are used only to deliver your invitation.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/response.js"></script>
+  <script src="/js/modal.js"></script>
+</body>
+</html>

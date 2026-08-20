@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= data.siteTitle %></title>
+  <link rel="icon" type="image/jpeg" href="/images/WhatsApp_Image_2026-07-27_at_8.23.38_AM.jpeg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="<%= data.siteTitle %>" />
+  <meta property="og:description" content="Join us for an event filled with joy, laughter, and warm memories." />
+  <meta property="og:image" content="https://i.imgur.com/IZxo6B7.jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="/" />
+  <meta property="og:site_name" content="<%= data.siteTitle %>" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="<%= data.siteTitle %>" />
+  <meta name="twitter:description" content="Join us for an event filled with joy, laughter, and warm memories." />
+  <meta name="twitter:image" content="/og-preview.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <div class="floral-bg" aria-hidden="true"></div>
+  <div class="petals" aria-hidden="true">
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+  </div>
+
+  <header class="site-header" aria-hidden="true"></header>
+
+  <main class="page">
+    <section class="panel" aria-labelledby="page-heading">
+      <div class="panel-inner">
+
+        <!-- Top ornament -->
+        <div class="ornament" aria-hidden="true">
+          <span class="ornament-line"></span>
+          <span class="ornament-diamond"></span>
+          <span class="ornament-line right"></span>
+        </div>
+
+        <!-- Decorative wine flower -->
+        <div class="deco-flower" aria-hidden="true">
+          <img src="https://images.pexels.com/photos/6816312/pexels-photo-6816312.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+               alt=""
+               loading="lazy" />
+        </div>
+
+        <!-- Eyebrow -->
+        <p class="eyebrow">You're Invited</p>
+
+        <!-- Heading -->
+        <h1 class="panel-title" id="page-heading"><%= data.heading %></h1>
+
+        <!-- Description -->
+        <p class="panel-desc"><%= data.description %></p>
+
+        <!-- CTA -->
+        <a class="btn-gold" href="/highlights">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 9h16M8 3v2m8-2v2M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <%= data.buttonText %>
+        </a>
+
+        <!-- Countdown -->
+        <div class="countdown" id="countdown" data-target="<%= data.countdownTarget %>" aria-label="Countdown to event">
+          <div class="cd-unit">
+            <span class="cd-num" id="cd-mo">0</span>
+            <span class="cd-label">mo</span>
+          </div>
+          <div class="cd-unit">
+            <span class="cd-num" id="cd-days">0</span>
+            <span class="cd-label">d</span>
+          </div>
+          <div class="cd-unit">
+            <span class="cd-num" id="cd-hours">0</span>
+            <span class="cd-label">h</span>
+          </div>
+          <div class="cd-unit">
+            <span class="cd-num" id="cd-mins">0</span>
+            <span class="cd-label">m</span>
+          </div>
+          <div class="cd-unit">
+            <span class="cd-num" id="cd-secs">00</span>
+            <span class="cd-label">s</span>
+          </div>
+        </div>
+
+        <!-- Thin gold divider -->
+        <div class="detail-divider" aria-hidden="true"></div>
+
+        <!-- When / Where / Time -->
+        <div class="event-details">
+          <div class="detail">
+            <span class="detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="8" width="32" height="28" rx="3" fill="rgba(106,13,37,0.04)" stroke="rgba(184,150,58,0.6)" stroke-width="1.5"/>
+                <rect x="4" y="8" width="32" height="11" rx="3" fill="rgba(184,150,58,0.18)"/>
+                <path d="M4 19h32" stroke="rgba(184,150,58,0.4)" stroke-width="1"/>
+                <path d="M13 4v8M27 4v8" stroke="rgba(184,150,58,0.7)" stroke-width="1.8" stroke-linecap="round"/>
+                <text x="20" y="33" text-anchor="middle" font-family="Jost,sans-serif" font-size="9" font-weight="700" fill="#B8963A">17</text>
+                <text x="20" y="16" text-anchor="middle" font-family="Jost,sans-serif" font-size="5.5" font-weight="600" fill="rgba(184,150,58,0.75)">July</text>
+              </svg>
+            </span>
+            <span class="detail-label">When</span>
+            <span class="detail-value"><%= data.eventDate %></span>
+          </div>
+
+          <div class="divider-v" aria-hidden="true"></div>
+
+          <div class="detail">
+            <span class="detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 36 C20 36 8 26 8 16 A12 12 0 0 1 32 16 C32 26 20 36 20 36 Z" fill="rgba(106,13,37,0.06)" stroke="rgba(184,150,58,0.6)" stroke-width="1.5" stroke-linejoin="round"/>
+                <circle cx="20" cy="16" r="4" fill="rgba(184,150,58,0.3)" stroke="rgba(184,150,58,0.7)" stroke-width="1"/>
+                <circle cx="20" cy="16" r="1.8" fill="rgba(255,255,255,0.7)"/>
+              </svg>
+            </span>
+            <span class="detail-label">Where</span>
+            <span class="detail-value"><%= data.eventVenue %></span>
+          </div>
+
+          <div class="divider-v" aria-hidden="true"></div>
+
+          <div class="detail">
+            <span class="detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="15" fill="rgba(106,13,37,0.04)" stroke="rgba(184,150,58,0.6)" stroke-width="1.5"/>
+                <circle cx="20" cy="5.5" r="1.5" fill="rgba(184,150,58,0.6)"/>
+                <circle cx="20" cy="34.5" r="1.5" fill="rgba(184,150,58,0.6)"/>
+                <circle cx="5.5" cy="20" r="1.5" fill="rgba(184,150,58,0.6)"/>
+                <circle cx="34.5" cy="20" r="1.5" fill="rgba(184,150,58,0.6)"/>
+                <path d="M20 12v8l5 3" stroke="#B8963A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="20" cy="20" r="2" fill="#B8963A"/>
+              </svg>
+            </span>
+            <span class="detail-label">Time</span>
+            <span class="detail-value"><%= data.eventTime %></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-hidden="true"></footer>
+
+  <script src="/js/countdown.js"></script>
+</body>
+</html>
