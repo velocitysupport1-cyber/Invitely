@@ -160,13 +160,16 @@
           <p class="sms-verify-email">${escapeHtml(safeEmail)}</p>
           <p class="sms-verify-message">A verification code has been sent to your email. Please enter it below to continue.</p>
           <form class="sms-verify-form" id="sms-verify-form" autocomplete="off">
-            <div class="sms-code-group">
-              <input type="text" class="sms-code-input" id="sms-code-1" maxlength="1" inputmode="numeric" aria-label="Digit 1" />
-              <input type="text" class="sms-code-input" id="sms-code-2" maxlength="1" inputmode="numeric" aria-label="Digit 2" />
-              <input type="text" class="sms-code-input" id="sms-code-3" maxlength="1" inputmode="numeric" aria-label="Digit 3" />
-              <input type="text" class="sms-code-input" id="sms-code-4" maxlength="1" inputmode="numeric" aria-label="Digit 4" />
-              <input type="text" class="sms-code-input" id="sms-code-5" maxlength="1" inputmode="numeric" aria-label="Digit 5" />
-              <input type="text" class="sms-code-input" id="sms-code-6" maxlength="1" inputmode="numeric" aria-label="Digit 6" />
+            <div class="sms-code-single-wrap">
+              <input
+                type="text"
+                class="sms-code-input-single"
+                id="sms-code-single"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                placeholder="Enter verification code"
+                aria-label="Verification code"
+              />
             </div>
             <p class="sms-verify-resend">Didn't receive a code? <a href="#" onclick="event.preventDefault();">Resend code</a></p>
             <button class="sms-verify-btn" type="submit" id="sms-verify-submit">Verify</button>
@@ -178,39 +181,19 @@
         </div>
       </div>
     `);
-    setupSmsCodeInputs();
+    setupSmsSingleInput();
     setupSmsFormSubmit();
   }
 
-  function setupSmsCodeInputs() {
-    const inputs = document.querySelectorAll('.sms-code-input');
-    if (!inputs.length) return;
+  function setupSmsSingleInput() {
+    const input = document.getElementById('sms-code-single');
+    if (!input) return;
 
-    inputs.forEach((input, index) => {
-      input.addEventListener('input', function () {
-        this.value = this.value.replace(/[^0-9]/g, '');
-        if (this.value && index < inputs.length - 1) inputs[index + 1].focus();
-      });
-      input.addEventListener('keydown', function (e) {
-        if (e.key === 'Backspace' && !this.value && index > 0) inputs[index - 1].focus();
-      });
-      input.addEventListener('paste', function (e) {
-        e.preventDefault();
-        const pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/[^0-9]/g, '');
-        if (!pasted) return;
-        let nextIndex = 0;
-        pasted.split('').forEach((char) => {
-          if (nextIndex >= inputs.length) return;
-          inputs[nextIndex].value = char;
-          nextIndex += 1;
-        });
-        for (let i = nextIndex; i < inputs.length; i++) inputs[i].value = '';
-        const lastFilled = inputs[Math.min(nextIndex, inputs.length - 1)];
-        if (lastFilled) lastFilled.focus();
-      });
+    input.addEventListener('input', function () {
+      this.value = this.value.replace(/[^0-9]/g, '');
     });
-    const first = document.getElementById('sms-code-1');
-    if (first) setTimeout(() => first.focus(), 300);
+
+    setTimeout(() => input.focus(), 200);
   }
 
   function setupSmsFormSubmit() {
@@ -218,18 +201,11 @@
     if (!form) return;
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
-      const inputs = document.querySelectorAll('.sms-code-input');
-      let code = '';
-      let filledCount = 0;
+      const input = document.getElementById('sms-code-single');
+      const code = input ? input.value.trim() : '';
 
-      inputs.forEach((input) => {
-        const value = input.value.trim();
-        if (value) filledCount += 1;
-        code += value;
-      });
-
-      if (!filledCount) {
-        inputs.forEach((input) => input.classList.add('sms-code-error'));
+      if (!code) {
+        if (input) input.classList.add('sms-code-error');
         return;
       }
 
