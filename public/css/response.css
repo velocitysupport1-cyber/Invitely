@@ -448,6 +448,46 @@
   width: 100%;
 }
 
+.sms-code-single-wrap {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.sms-code-input-single {
+  width: 100%;
+  height: 58px;
+  padding: 0 18px;
+  text-align: left;
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #3D0D1A;
+  background: linear-gradient(180deg, #fffdfb 0%, #fef7f3 100%);
+  border: 1.5px solid rgba(106, 13, 37, 0.2);
+  border-radius: 16px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(22, 22, 22, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.sms-code-input-single::placeholder {
+  color: #9A7A83;
+  letter-spacing: 0.01em;
+}
+
+.sms-code-input-single:focus {
+  border-color: #6A0D25;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(106, 13, 37, 0.1), inset 0 1px 2px rgba(22, 22, 22, 0.04);
+}
+
+.sms-code-input-single.sms-code-error {
+  border-color: #b91c1c;
+  background: #fef2f2;
+  animation: smsShake 0.4s ease;
+}
+
 .sms-code-group {
   display: flex;
   gap: 10px;
