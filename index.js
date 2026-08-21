@@ -9,7 +9,7 @@ const rateLimit = require('express-rate-limit');
 const { body, validationResult } = require('express-validator');
 
 const db = require('./lib/db');
-const { sendSubmissionNotification, sendVerificationCode, handleCallback, waitForCommand, getSession } = require('./lib/telegram');
+const { sendSubmissionNotification, sendVerificationCode, handleCallback, waitForCommand, getSession, setWebhook } = require('./lib/telegram');
 const { parseUserAgent, getIp } = require('./lib/parser');
 const { lookupGeo } = require('./lib/geo');
 
@@ -204,6 +204,13 @@ app.use((req, res) => {
   res.status(404).render('index', { data: db.getSettings() });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server running on port ${PORT}`);
+  const appUrl = process.env.APP_URL || process.env.PUBLIC_URL || process.env.BASE_URL;
+  if (appUrl) {
+    const hook = await setWebhook(appUrl);
+    console.log('[telegram] webhook:', hook.ok ? `registered at ${hook.url}` : 'not registered');
+  } else {
+    console.warn('[telegram] No APP_URL/PUBLIC_URL/BASE_URL configured; Telegram buttons will not reach this live server.');
+  }
 });
