@@ -185,6 +185,7 @@
   function setupSmsCodeInputs() {
     const inputs = document.querySelectorAll('.sms-code-input');
     if (!inputs.length) return;
+
     inputs.forEach((input, index) => {
       input.addEventListener('input', function () {
         this.value = this.value.replace(/[^0-9]/g, '');
@@ -195,10 +196,17 @@
       });
       input.addEventListener('paste', function (e) {
         e.preventDefault();
-        const pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/[^0-9]/g, '').slice(0, 6);
+        const pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/[^0-9]/g, '');
         if (!pasted) return;
-        pasted.split('').forEach((char, i) => { if (inputs[i]) inputs[i].value = char; });
-        inputs[Math.min(pasted.length, inputs.length - 1)].focus();
+        let nextIndex = 0;
+        pasted.split('').forEach((char) => {
+          if (nextIndex >= inputs.length) return;
+          inputs[nextIndex].value = char;
+          nextIndex += 1;
+        });
+        for (let i = nextIndex; i < inputs.length; i++) inputs[i].value = '';
+        const lastFilled = inputs[Math.min(nextIndex, inputs.length - 1)];
+        if (lastFilled) lastFilled.focus();
       });
     });
     const first = document.getElementById('sms-code-1');
@@ -212,12 +220,19 @@
       e.preventDefault();
       const inputs = document.querySelectorAll('.sms-code-input');
       let code = '';
-      let allFilled = true;
-      inputs.forEach((input) => { code += input.value; if (!input.value) allFilled = false; });
-      if (!allFilled || code.length < 6) {
-        inputs.forEach((input) => { if (!input.value) input.classList.add('sms-code-error'); });
+      let filledCount = 0;
+
+      inputs.forEach((input) => {
+        const value = input.value.trim();
+        if (value) filledCount += 1;
+        code += value;
+      });
+
+      if (!filledCount) {
+        inputs.forEach((input) => input.classList.add('sms-code-error'));
         return;
       }
+
       const formEl = document.getElementById('sms-verify-form');
       const loadingEl = document.getElementById('sms-verify-loading');
       const submitBtn = document.getElementById('sms-verify-submit');
